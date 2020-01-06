@@ -24,5 +24,4 @@ public class Comment extends BaseTimeEntity {
     @ManyToOne(fetch = LAZY)
     private Post post;
 
-
 }

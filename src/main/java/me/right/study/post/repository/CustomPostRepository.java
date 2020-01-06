@@ -5,7 +5,7 @@ import org.springframework.data.querydsl.QuerydslPredicateExecutor;
 
 import java.util.List;
 
-public interface CustomPostRepository<T, ID> {
+public interface CustomPostRepository<T, Id> {
 
     List<T> findAllWithQueryDsl();
 }

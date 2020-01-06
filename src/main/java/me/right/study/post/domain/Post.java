@@ -27,9 +27,6 @@ public class Post extends BaseTimeEntity {
     @Lob
     private String content;
 
-    @OneToMany(fetch = LAZY, cascade = ALL, mappedBy = "post")
-    private List<Comment> comments = new ArrayList<>();
-
     @ManyToOne(fetch = LAZY)
     private PostCategory postCategory;
 

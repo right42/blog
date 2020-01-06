@@ -4,9 +4,13 @@ import lombok.*;
 
 import javax.persistence.*;
 
+import static javax.persistence.CascadeType.*;
+import static javax.persistence.FetchType.*;
+import static lombok.AccessLevel.*;
+
 @Entity
 @Getter @Builder
-@NoArgsConstructor(access = AccessLevel.PROTECTED)
+@NoArgsConstructor(access = PROTECTED)
 @AllArgsConstructor
 public class PostCategory {
 
@@ -17,7 +21,7 @@ public class PostCategory {
 
     private String etc;
 
-    @ManyToOne(fetch = FetchType.LAZY)
+    @ManyToOne(fetch = LAZY, cascade = ALL)
     private PostCategory parents;
 
 }
