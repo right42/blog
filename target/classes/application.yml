@@ -1,0 +1,16 @@
+server:
+  port: 8080
+
+logging:
+  level:
+    org.hibernate.type.descriptor.sql: trace
+    
+spring:
+  jpa:
+    generate-ddl: true
+    properties:
+      hibernate.format_sql: true
+      hibernate.default_batch_fetch_size: 100
+
+    hibernate:
+      ddl-auto: create
