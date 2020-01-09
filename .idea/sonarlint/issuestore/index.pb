@@ -33,3 +33,7 @@ i
 9src/main/java/me/right/study/post/web/PostController.java,d\4\d4630626fdde567ffcf7e0ae0d3f9630671e29bc
 q
 Asrc/main/java/me/right/study/post/domain/dto/PostResponseDto.java,7\9\79d428f80f56aea7ceba9f21a0715588c0f0fd3b
+Z
+*src/main/java/me/right/study/InitData.java,d\b\db3ecacf66bd1bdf38409e9b8599207cc306c195
+b
+2src/main/java/me/right/study/StudyApplication.java,0\9\099a38ada71361cfcf8ee849d4ef4dc45c155711

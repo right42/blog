@@ -3,6 +3,14 @@
       xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
       layout:decorate="~{layout/default.html}">
 
+<head>
+    <title th:text="Right blog"></title>
+</head>
+
+<th:block layout:fragment="header">
+    <th:block th:replace="~{fragments/header :: header}"></th:block>
+</th:block>
+
 <th:block layout:fragment="content">
     <!-- Main Content -->
     <div class="container">
@@ -10,17 +18,14 @@
             <div class="col-lg-8 col-md-10 mx-auto">
 
                 <div class="post-preview" th:each="post : ${posts.content}">
-                    <a href="post.html">
-                        <h2 class="post-title" th:text="${post.title}">
-                        </h2>
-                        <h3 class="post-subtitle">
-                            Problems look mighty small from 150 miles up
-                        </h3>
+                    <a th:href="@{/post/{id}(id=${post.id})}">
+                        <h2 class="post-title" th:text="${post.title}"></h2>
                     </a>
-                    <p class="post-meta">Posted by<span th:text="${post.createdDate}"></span></p>
 
+                    <p class="post-meta">Posted by<span th:text="${post.createdDate}"></span></p>
+                    <hr>
                 </div>
-                <hr>
+
                 <!-- Pager -->
                 <div class="clearfix">
                     <a class="btn btn-primary float-right" href="#">Older Posts &rarr;</a>

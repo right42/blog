@@ -11,6 +11,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
+import java.util.Optional;
 
 @Service
 @RequiredArgsConstructor
@@ -30,5 +31,11 @@ public class PostService {
     @Transactional
     public Long save(PostRequestDto postRequestDto) {
         return postRepository.save(postRequestDto.toEntity()).getId();
+    }
+
+    public PostResponseDto findOne(Long id) {
+        var findPost = postRepository.findById(id).orElseThrow();
+
+        return new PostResponseDto(findPost);
     }
 }

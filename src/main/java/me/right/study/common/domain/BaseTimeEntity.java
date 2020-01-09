@@ -1,7 +1,6 @@
 package me.right.study.common.domain;
 
 import lombok.Getter;
-import org.apache.tomcat.jni.Local;
 
 import javax.persistence.MappedSuperclass;
 import javax.persistence.PrePersist;
