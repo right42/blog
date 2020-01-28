@@ -1,16 +1,18 @@
 package me.right.study.post.web;
 
-import lombok.Getter;
 import lombok.RequiredArgsConstructor;
 import me.right.study.post.domain.dto.PostResponseDto;
 import me.right.study.post.service.PostService;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Sort;
+import org.springframework.data.web.PageableDefault;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 @Controller
@@ -21,10 +23,16 @@ public class PostController {
 
     @GetMapping("/")
     public String index(Model model){
-        model.addAttribute("posts", postService.findAll(PageRequest.of(0, 5, Sort.by(Sort.Direction.DESC))));
+        model.addAttribute("posts", postService.findAll(PageRequest.of(0, 5, Sort.by(Sort.Direction.DESC, "createdDate"))));
 
         return "index";
+    }
 
+    @GetMapping("/posts/{page}")
+    public String posts(Model model, @PathVariable Integer page){
+        model.addAttribute("posts", postService.findAll(PageRequest.of(page, 5, Sort.by(Sort.Direction.DESC, "createdDate"))));
+
+        return "index";
     }
 
     @GetMapping("/post/{id}")
