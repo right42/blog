@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{layout/default.html}">
+
+<head>
+    <title th:text="Right blog"></title>
+</head>
+
+<th:block layout:fragment="header">
+    <th:block th:replace="~{fragments/header :: header}"></th:block>
+</th:block>
+
+<th:block layout:fragment="content">
+    <div class="container">
+        <form action="/posts" id="form" method="post">
+            <div class="form-group">
+                <input type="text" id="title" name="title" class="form-control" placeholder="Title">
+            </div>
+
+            <div class="form-group">
+                <textarea id="content" name="content"></textarea>
+            </div>
+            <div class="form-group">
+                <button id="save" class="btn btn-outline-primary">Save</button>
+            </div>
+        </form>
+    </div>
+    <hr>
+</th:block>
+
+<th:block layout:fragment="myScript">
+    <script src="https://cdn.ckeditor.com/ckeditor5/16.0.0/classic/ckeditor.js"></script>
+    <script src="/js/ckeditor-custom-adapter.js"></script>
+
+    <script>
+        ClassicEditor
+            .create( $c.el( '#content' ), {
+                'removePlugins' : ['Italic', 'MediaEmbed'],
+                 extraPlugins: [ MyCustomUploadAdapterPlugin ]
+             })
+            .catch( error => {
+                console.error( error );
+            } );
+    </script>
+</th:block>

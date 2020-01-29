@@ -30,6 +30,8 @@ public class PostService {
 
     @Transactional
     public Long save(PostRequestDto postRequestDto) {
+        postRequestDto.setWriter("right");
+
         return postRepository.save(postRequestDto.toEntity()).getId();
     }
 

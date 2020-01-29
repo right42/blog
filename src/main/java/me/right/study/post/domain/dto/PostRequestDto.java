@@ -17,14 +17,15 @@ public class PostRequestDto {
     @NotEmpty
     private String content;
 
-    @NotEmpty
     private String writer;
 
-    @NotNull
     private PostCategory postCategory;
 
     public Post toEntity() {
         return Post.builder()
+                    .writer(this.writer)
+                    .content(this.content)
+                    .title(this.title)
                     .build();
     }
 }

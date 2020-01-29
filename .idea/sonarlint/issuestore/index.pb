@@ -35,5 +35,10 @@ q
 Asrc/main/java/me/right/study/post/domain/dto/PostResponseDto.java,7\9\79d428f80f56aea7ceba9f21a0715588c0f0fd3b
 Z
 *src/main/java/me/right/study/InitData.java,d\b\db3ecacf66bd1bdf38409e9b8599207cc306c195
-b
-2src/main/java/me/right/study/StudyApplication.java,0\9\099a38ada71361cfcf8ee849d4ef4dc45c155711
+:
+
+.gitignore,a\5\a5cc2925ca8258af241be7e5b0381edf30266302
+g
+7src/test/java/me/right/study/StudyApplicationTests.java,7\1\71eed4aca8abf6d60d92460116b727b880497e76
+]
+-src/main/java/me/right/study/Application.java,b\5\b538ea4a8044a5c5b1367157919ff6c3fba7a995

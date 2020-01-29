@@ -11,4 +11,17 @@ public class WebUtil {
         var req = (HttpServletRequest) ServletRequestContext.current().getServletRequest();
         return req;
     }
+
+    public static void setSessionAttribute(String key, Object value){
+        getRequest().getSession().setAttribute(key, value);
+    }
+
+    public static <T> T getSessionAttribute(String key){
+        return (T) getRequest().getSession().getAttribute(key);
+    }
+
+    public static void removeSession(String key){
+        getRequest().getSession().removeAttribute(key);
+    }
+
 }
