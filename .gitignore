@@ -119,4 +119,6 @@ hs_err_pid*
 ## ignoring target file
 target/
 
+src/main/resources/static/upload/*
+
 # End of https://www.gitignore.io/api/java,java-web,intellij
