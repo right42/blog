@@ -1,5 +1,3 @@
 
-squid:UselessImportCheck"QRemove this unused import 'org.springframework.web.bind.annotation.RequestParam'.(Â¬À·ùÿÿÿÿ8¢¼Øş-
-ssquid:UselessImportCheck
-"IRemove this unused import 'org.springframework.data.web.PageableDefault'.(¯’Î<8ËØöÖş-
-usquid:UselessImportCheck"ERemove this unused import 'org.springframework.data.domain.Pageable'.(‡ë‚Öıÿÿÿÿ8ËØöÖş-
+usquid:UselessImportCheck	"ERemove this unused import 'org.springframework.data.domain.Pageable'.(‡ë‚Öıÿÿÿÿ8ËØöÖş-
+ssquid:UselessImportCheck"IRemove this unused import 'org.springframework.data.web.PageableDefault'.(¯’Î<8ËØöÖş-

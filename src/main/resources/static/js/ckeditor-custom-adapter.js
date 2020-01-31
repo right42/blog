@@ -44,6 +44,7 @@ class MyUploadAdapter {
         xhr.addEventListener( 'load', () => {
             const response = xhr.response;
 
+            console.dir(response);
             // This example assumes the XHR server's "response" object will come with
             // an "error" which has its own "message" that can be passed to reject()
             // in the upload promise.
@@ -59,7 +60,7 @@ class MyUploadAdapter {
             // This URL will be used to display the image in the content. Learn more in the
             // UploadAdapter#upload documentation.
             resolve( {
-                default: response.url
+                default: response.uri
             } );
         } );
 

@@ -3,6 +3,7 @@ package me.right.study.post.domain;
 import lombok.*;
 import me.right.study.comment.domain.Comment;
 import me.right.study.common.domain.BaseTimeEntity;
+import me.right.study.tag.domain.PostTag;
 
 import javax.persistence.*;
 import java.util.ArrayList;
@@ -27,7 +28,8 @@ public class Post extends BaseTimeEntity {
     @Lob
     private String content;
 
-    @ManyToOne(fetch = LAZY)
-    private PostCategory postCategory;
+    @OneToMany(fetch = LAZY, cascade = ALL)
+    @JoinColumn(name="post_id")
+    private List<PostTag> postTags = new ArrayList<>();
 
 }

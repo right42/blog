@@ -1,18 +1,19 @@
 package me.right.study.common.domain;
 
 import lombok.*;
-import me.right.study.common.service.FileService;
-import org.springframework.web.multipart.MultipartFile;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import java.io.File;
+
+import static java.io.File.*;
 
 @Entity
 @Getter @Builder
 @AllArgsConstructor
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
-public class File extends BaseTimeEntity {
+public class FileData extends BaseTimeEntity {
 
     @Id
     @GeneratedValue
@@ -24,14 +25,16 @@ public class File extends BaseTimeEntity {
 
     private String filePath;
 
+    private String fileFullName;
 
-    public static File createFileData(String fileName, String filePath) {
-        File file = new File();
-        file.fileOriginalName = fileName;
-        file.fileName = System.currentTimeMillis() + fileName.substring(fileName.lastIndexOf('.'));
-        file.filePath = filePath;
+    public static FileData createFileData(String fileName, String filePath) {
+        FileData fileData = new FileData();
+        fileData.fileOriginalName = fileName;
+        fileData.fileName = System.currentTimeMillis() + fileName.substring(fileName.lastIndexOf('.'));
+        fileData.filePath = filePath;
+        fileData.fileFullName = filePath + fileData.fileName;
 
-        return file;
+        return fileData;
     }
 
     public static void main(String[] args) {

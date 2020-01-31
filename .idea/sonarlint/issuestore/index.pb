@@ -42,3 +42,15 @@ g
 7src/test/java/me/right/study/StudyApplicationTests.java,7\1\71eed4aca8abf6d60d92460116b727b880497e76
 ]
 -src/main/java/me/right/study/Application.java,b\5\b538ea4a8044a5c5b1367157919ff6c3fba7a995
+m
+=src/test/java/me/right/study/post/web/PostControllerTest.java,a\5\a591b7c93bd8166932f86c846a06b0e54a2a43b1
+e
+5src/main/java/me/right/study/common/util/WebUtil.java,6\e\6e9a7db3836aecbd34bdb06713b1882e15039e23
+r
+Bsrc/main/java/me/right/study/common/repository/FileRepository.java,a\e\ae6db291955396f0983866d449f36fa2ed19d32c
+k
+;src/main/java/me/right/study/common/web/FileController.java,2\3\2362f24fec75a55974119ac2cb5151766307f761
+d
+4src/main/java/me/right/study/common/domain/File.java,6\c\6cb1e95fca16cd3099048ea5637989f0cc7d2c68
+l
+<src/main/java/me/right/study/common/service/FileService.java,7\c\7cc75cc8012fef2b10240b74536764b184c4cc8c

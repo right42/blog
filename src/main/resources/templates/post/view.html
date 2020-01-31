@@ -31,7 +31,7 @@
     <article>
         <div class="container" th:object="${post}">
             <div class="row">
-                <div class="col-lg-8 col-md-10 mx-auto" th:text="*{content}">
+                <div class="col-lg-8 col-md-10 mx-auto" th:utext="*{content}">
                 </div>
             </div>
         </div>

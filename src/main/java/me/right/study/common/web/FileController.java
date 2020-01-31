@@ -20,7 +20,7 @@ public class FileController {
     public CKEditorResponse upload(@RequestParam("upload") MultipartFile file){
 
         try {
-            String filePath = fileService.save(file);
+            String filePath = fileService.upload(file);
 
             return new CKEditorResponse(filePath);
         } catch (IOException e) {

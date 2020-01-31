@@ -1,7 +1,8 @@
 package me.right.study.common.service;
 
 import lombok.RequiredArgsConstructor;
-import me.right.study.common.domain.File;
+import lombok.extern.slf4j.Slf4j;
+import me.right.study.common.domain.FileData;
 import me.right.study.common.repository.FileRepository;
 import me.right.study.common.util.WebUtil;
 import org.springframework.stereotype.Service;
@@ -15,35 +16,63 @@ import java.util.Arrays;
 import java.util.List;
 import java.util.Objects;
 
+import static me.right.study.common.util.WebUtil.getSessionAttribute;
+
+@Slf4j
 @Service
 @Transactional(readOnly = true)
 @RequiredArgsConstructor
 public class FileService {
 
-    private static final String FILE_UPLOAD_PATH = "C:\\Users\\ASUS\\Desktop\\개인\\project\\image";
+    private static final String FILE_UPLOAD_PATH = "C:\\Users\\ASUS\\Desktop\\개인\\project\\blog\\src\\main\\resources\\static\\upload\\";
+
+    private static final String TEMP_FILE_LIST = "tempFiles";
 
     private final FileRepository fileRepository;
 
-    @Transactional(rollbackFor = IOException.class)
-    public String save(MultipartFile file) throws IOException {
+    @Transactional(rollbackFor = Exception.class)
+    public String upload(MultipartFile file) throws IOException {
 
-        File fileData = File.createFileData(file.getOriginalFilename(), FileService.FILE_UPLOAD_PATH);
-        file.transferTo(Path.of(FILE_UPLOAD_PATH + fileData.getFileName()));
+        Long savedId = save(file);
+        FileData fileData = fileRepository.getOne(savedId);
 
-        Long savedId = fileRepository.save(fileData).getId();
         addFileId(savedId);
 
-        return fileData.getFilePath() + java.io.File.separator + fileData.getFileName();
+        // TODO local Storage -> AWS S3
+        return "/upload/" + fileData.getFileName();
+    }
+
+    private Long save(MultipartFile file) throws IOException {
+
+        FileData fileData = FileData.createFileData(file.getOriginalFilename(), FILE_UPLOAD_PATH);
+        file.transferTo(Path.of(FILE_UPLOAD_PATH + fileData.getFileName()));
+
+        return fileRepository.save(fileData).getId();
     }
 
     private void addFileId(Long id){
-        if (Objects.isNull(WebUtil.getSessionAttribute("uploadFiles"))){
-            WebUtil.setSessionAttribute("uploadFiles", Arrays.asList(id));
+        List<Long> tempFiles = WebUtil.getSessionAttribute(TEMP_FILE_LIST);
+
+        if ( Objects.isNull(tempFiles)) {
+            WebUtil.setSessionAttribute(TEMP_FILE_LIST, Arrays.asList(id));
         } else {
-            List<Long> uploadFiles = WebUtil.<List>getSessionAttribute("uploadFiles");
-            uploadFiles.add(id);
+            tempFiles.add(id);
         }
     }
 
+    private void removeTempFiles(){
+        List<Long> tempFiles = getSessionAttribute(TEMP_FILE_LIST);
 
+        List<FileData> allById = fileRepository.findAllById(tempFiles);
+        allById.forEach(e -> {
+            String fileFullName = e.getFileFullName();
+
+            try {
+                Files.delete(Path.of(fileFullName));
+            } catch (IOException ex) {
+                log.error("File Delete Fail ==> " + ex.getMessage());
+            }
+        });
+
+    }
 }
