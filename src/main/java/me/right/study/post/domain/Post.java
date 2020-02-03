@@ -4,6 +4,7 @@ import lombok.*;
 import me.right.study.comment.domain.Comment;
 import me.right.study.common.domain.BaseTimeEntity;
 import me.right.study.tag.domain.PostTag;
+import me.right.study.tag.dto.TagDto;
 
 import javax.persistence.*;
 import java.util.ArrayList;
@@ -28,8 +29,11 @@ public class Post extends BaseTimeEntity {
     @Lob
     private String content;
 
-    @OneToMany(fetch = LAZY, cascade = ALL)
-    @JoinColumn(name="post_id")
+    @OneToMany(fetch = LAZY, cascade = ALL, mappedBy = "post")
     private List<PostTag> postTags = new ArrayList<>();
+
+    public void addTags(List<TagDto> tags) {
+
+    }
 
 }

@@ -22,6 +22,9 @@ public class PostTag extends BaseTimeEntity {
     @GeneratedValue
     private Long id;
 
+    @ManyToOne
+    private Post post;
+
     @ManyToOne(fetch = LAZY)
     private Tag tag;
 
