@@ -3,16 +3,23 @@ package me.right.study;
 import lombok.RequiredArgsConstructor;
 import me.right.study.post.domain.Post;
 import me.right.study.post.repository.PostRepository;
+import me.right.study.tag.domain.Tag;
+import me.right.study.tag.repository.TagRepository;
 import org.springframework.boot.ApplicationArguments;
 import org.springframework.boot.ApplicationRunner;
 import org.springframework.stereotype.Component;
 import org.springframework.transaction.annotation.Transactional;
+
+import java.util.stream.IntStream;
+import java.util.stream.Stream;
 
 @Component
 @RequiredArgsConstructor
 public class InitData implements ApplicationRunner {
 
     private final PostRepository postRepository;
+
+    private final TagRepository tagRepository;
 
     @Override
     @Transactional
@@ -26,7 +33,11 @@ public class InitData implements ApplicationRunner {
                             .writer("test" + i)
                             .build()
             );
-        }
 
+            tagRepository.save(Tag.builder()
+                    .name("JPA" + i)
+                    .build()
+            );
+        }
     }
 }

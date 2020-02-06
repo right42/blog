@@ -5,6 +5,9 @@ import me.right.study.post.domain.Post;
 import me.right.study.post.domain.dto.PostRequestDto;
 import me.right.study.post.domain.dto.PostResponseDto;
 import me.right.study.post.repository.PostRepository;
+import me.right.study.tag.domain.PostTag;
+import me.right.study.tag.domain.Tag;
+import me.right.study.tag.repository.TagRepository;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
@@ -20,6 +23,8 @@ public class PostService {
 
     private final PostRepository postRepository;
 
+    private final TagRepository tagRepository;
+
     private List<Post> findAll(){
         return postRepository.findAll();
     }
@@ -32,7 +37,11 @@ public class PostService {
     public Long save(PostRequestDto postRequestDto) {
         postRequestDto.setWriter("right");
 
-        return postRepository.save(postRequestDto.toEntity()).getId();
+        List<Tag> tags = tagRepository.findAllById(postRequestDto.getTagIds());
+        Post post = postRequestDto.toEntity();
+        PostTag.linkPostAndTag(post, tags);
+
+        return postRepository.save(post).getId();
     }
 
     public PostResponseDto findOne(Long id) {

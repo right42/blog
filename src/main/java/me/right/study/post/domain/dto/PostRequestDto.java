@@ -5,6 +5,7 @@ import lombok.Setter;
 import me.right.study.post.domain.Post;
 
 import javax.validation.constraints.NotEmpty;
+import java.util.List;
 
 @Getter @Setter
 public class PostRequestDto {
@@ -16,6 +17,8 @@ public class PostRequestDto {
     private String content;
 
     private String writer;
+
+    private List<Long> tagIds;
 
     public Post toEntity() {
         return Post.builder()

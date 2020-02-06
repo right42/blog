@@ -15,8 +15,6 @@ h
 8src/main/java/me/right/study/comment/domain/Comment.java,5\f\5ffb8c62e3c17f41f0df29244b27787405eb87a8
 b
 2src/main/java/me/right/study/post/domain/Post.java,a\8\a8f956c76c2e1004717c798916e00747e173e8fa
-j
-:src/main/java/me/right/study/post/domain/PostCategory.java,a\d\adae41a4805e01961f1c1143e54ba5e33883205b
 v
 Fsrc/main/java/me/right/study/post/repository/CustomPostRepository.java,5\7\57e209a9dcd00fc09c297133b685a85e1e382d9b
 z
@@ -50,7 +48,13 @@ r
 Bsrc/main/java/me/right/study/common/repository/FileRepository.java,a\e\ae6db291955396f0983866d449f36fa2ed19d32c
 k
 ;src/main/java/me/right/study/common/web/FileController.java,2\3\2362f24fec75a55974119ac2cb5151766307f761
-d
-4src/main/java/me/right/study/common/domain/File.java,6\c\6cb1e95fca16cd3099048ea5637989f0cc7d2c68
 l
 <src/main/java/me/right/study/common/service/FileService.java,7\c\7cc75cc8012fef2b10240b74536764b184c4cc8c
+p
+@src/test/java/me/right/study/common/service/FileServiceTest.java,e\7\e717561f8091461137496707571e705779c0b665
+h
+8src/main/java/me/right/study/common/domain/FileData.java,e\7\e750a20ee8a821166f636ca2027c01485e404d10
+`
+0src/main/java/me/right/study/tag/domain/Tag.java,f\c\fc09dd3eb91be96893341609c449a985cf59e938
+d
+4src/main/java/me/right/study/tag/domain/PostTag.java,a\a\aa679a6f57a97a831f5bce95e340d9afff45cf9c
