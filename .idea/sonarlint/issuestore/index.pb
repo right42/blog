@@ -58,3 +58,13 @@ h
 0src/main/java/me/right/study/tag/domain/Tag.java,f\c\fc09dd3eb91be96893341609c449a985cf59e938
 d
 4src/main/java/me/right/study/tag/domain/PostTag.java,a\a\aa679a6f57a97a831f5bce95e340d9afff45cf9c
+h
+8src/main/java/me/right/study/tag/dto/TagResponseDto.java,7\5\7544d965f402f20259bd0d9c78383c79fd9c7d42
+g
+7src/main/java/me/right/study/tag/dto/TagRequestDto.java,f\2\f21d80a0a08615207dd515d7fd4f098b463d8b14
+h
+8src/main/java/me/right/study/tag/service/TagService.java,9\e\9eefca56fe39413478dbda98744bad04212390fd
+g
+7src/main/java/me/right/study/tag/web/TagController.java,3\3\331ebe24d95efa307f1e518861606514ea54884f
+n
+>src/main/java/me/right/study/tag/repository/TagRepository.java,e\8\e8cd2703e700c4293bd5e99c5d7f5b622b8b2867
