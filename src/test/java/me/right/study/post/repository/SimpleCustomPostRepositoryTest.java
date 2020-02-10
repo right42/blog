@@ -29,4 +29,11 @@ class SimpleCustomPostRepositoryTest {
 
         assertThat(result.size()).isEqualTo(0);
     }
+
+    @Test
+    public void findAllByTag(){
+
+        postRepository.findAllByTag("JPA");
+
+    }
 }

@@ -8,4 +8,6 @@ import java.util.List;
 public interface CustomPostRepository<T, Id> {
 
     List<T> findAllWithQueryDsl();
+
+    List<Post> findAllByTagName(String tagName);
 }
