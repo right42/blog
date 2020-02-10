@@ -121,4 +121,10 @@ target/
 
 src/main/resources/static/upload/
 
+.classpath
+
+.factorypath
+
+.project
+
 # End of https://www.gitignore.io/api/java,java-web,intellij

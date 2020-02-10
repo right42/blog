@@ -1,11 +1,11 @@
 package me.right.study.post.domain;
 
-import lombok.*;
+import lombok.AccessLevel;
+import lombok.Builder;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
 import me.right.study.common.domain.BaseTimeEntity;
 import me.right.study.tag.domain.PostTag;
-import me.right.study.tag.domain.Tag;
-import me.right.study.tag.dto.TagRequestDto;
-import org.jetbrains.annotations.NotNull;
 
 import javax.persistence.*;
 import java.util.ArrayList;

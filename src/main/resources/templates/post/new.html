@@ -21,6 +21,19 @@
             <div class="form-group">
                 <textarea id="content" name="content"></textarea>
             </div>
+
+            <div class="form-group">
+                <input type="text" id="tagSearch" name="tagSearch" class="form-control">
+            </div>
+
+            <div id="tags" class="form-group">
+
+            </div>
+
+            <div id="selectedTags" class="form-group">
+
+            </div>
+
             <div class="form-group">
                 <button id="save" class="btn btn-outline-primary">Save</button>
             </div>
@@ -32,15 +45,52 @@
 <th:block layout:fragment="myScript">
     <script src="https://cdn.ckeditor.com/ckeditor5/16.0.0/classic/ckeditor.js"></script>
     <script src="/js/ckeditor-custom-adapter.js"></script>
-
     <script>
-        ClassicEditor
-            .create( $c.el( '#content' ), {
-                'removePlugins' : ['Italic', 'MediaEmbed'],
-                 extraPlugins: [ MyCustomUploadAdapterPlugin ]
-             })
-            .catch( error => {
-                console.error( error );
-            } );
+        var timer;
+
+        window.addEventListener('load', function(){
+            ClassicEditor
+                .create( document.querySelector('#content'), {
+                    'removePlugins' : ['Italic', 'MediaEmbed'],
+                    extraPlugins: [ MyCustomUploadAdapterPlugin ]
+                })
+                .catch( error => {
+                    console.error( error );
+                } );
+
+            document.querySelector('#tagSearch').addEventListener('change', function(){
+                if ( timer ) {
+                    clearTimeout(timer);
+                }
+
+                let value = this.value;
+                if ( value === '') {
+                    return;
+                }
+                
+                timer = setTimeout(function() {
+                    axios.get('/tags?q=' + value)
+                        .then(({data : res}) => {
+                            
+                            let tagsDiv = document.createElement('div');
+                            res.content.forEach((e) => {
+                                let el = document.createElement('div');
+                                el.textContent = e.name;
+                                tagsDiv.appendChild(el);
+                            });
+                            let tags = document.querySelector('#tags');
+                            if ( tags.hasChildNodes()) {
+                                tags.childNodes.forEach((node) => {
+                                    node.remove();
+                                });
+                            }
+                            tags.appendChild(tagsDiv);
+                        })
+                        .catch((err) => {
+                            console.error(err);
+                        });
+                }, 300);
+            });
+        });
     </script>
 </th:block>
