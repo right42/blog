@@ -23,7 +23,7 @@
             </div>
 
             <div class="form-group">
-                <input type="text" id="tagSearch" name="tagSearch" class="form-control">
+                <input type="text" id="tagSearch" name="tagSearch" class="form-control" placeholder="Tag name..">
             </div>
 
             <div id="tags" class="form-group">
@@ -58,13 +58,14 @@
                     console.error( error );
                 } );
 
-            document.querySelector('#tagSearch').addEventListener('change', function(){
+            document.querySelector('#tagSearch').addEventListener('input', function(){
                 if ( timer ) {
                     clearTimeout(timer);
                 }
 
                 let value = this.value;
                 if ( value === '') {
+                    clearChild('#tags');
                     return;
                 }
                 
@@ -74,23 +75,29 @@
                             
                             let tagsDiv = document.createElement('div');
                             res.content.forEach((e) => {
-                                let el = document.createElement('div');
+                                let el = document.createElement('span');
                                 el.textContent = e.name;
+                                el.classList = 'badge badge-pill badge-light';
                                 tagsDiv.appendChild(el);
                             });
-                            let tags = document.querySelector('#tags');
-                            if ( tags.hasChildNodes()) {
-                                tags.childNodes.forEach((node) => {
-                                    node.remove();
-                                });
-                            }
+
+                            clearChild('#tags');
+
                             tags.appendChild(tagsDiv);
                         })
                         .catch((err) => {
                             console.error(err);
                         });
-                }, 300);
+                }, 400);
             });
         });
+        function clearChild(selector){
+            let tag = document.querySelector(selector);
+            if ( tag.hasChildNodes()) {
+                tag.childNodes.forEach((node) => {
+                    node.remove();
+                });
+            }
+        }
     </script>
 </th:block>

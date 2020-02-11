@@ -1,2 +1,8 @@
 
-vsquid:UselessImportCheck"FRemove this unused import 'org.springframework.stereotype.Repository'.(¦ıÍıüÿÿÿÿ8†Ü€Ì÷-
+vsquid:UselessImportCheck"FRemove this unused import 'org.springframework.stereotype.Repository'.(¦ıÍıüÿÿÿÿ8†Ü€Ì÷-
+usquid:UselessImportCheck"JRemove this unused import 'com.querydsl.core.annotations.QueryProjection'.(Ë¬€£8¸Ó¦î‚.
+zsquid:UselessImportCheck"JRemove this unused import 'org.springframework.data.jpa.repository.Query'.(Äºöïşÿÿÿÿ8±¡†î‚.
+bsquid:UselessImportCheck"2Remove this unused import 'java.util.Collections'.(¢³ïÓşÿÿÿÿ8‘ù£î‚.
+osquid:UselessImportCheck"?Remove this unused import 'org.hibernate.criterion.Projection'.(™ŞÅıÿÿÿÿ8ûÌçí‚.
+jsquid:UselessImportCheck"?Remove this unused import 'com.querydsl.core.types.EntityPath'.(“µ»è8ìƒí‚.
+ksquid:UselessImportCheck"@Remove this unused import 'com.querydsl.core.types.Projections'.(¿¯Ò„8Ç£î‚.

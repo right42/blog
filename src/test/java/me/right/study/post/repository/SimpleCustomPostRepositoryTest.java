@@ -33,7 +33,6 @@ class SimpleCustomPostRepositoryTest {
     @Test
     public void findAllByTag(){
 
-        postRepository.findAllByTag("JPA");
 
     }
 }

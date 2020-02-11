@@ -1,5 +1,4 @@
 
 Csquid:S2326" Id is not used in the interface.(ƒøÕÛşÿÿÿÿ8¦¢ãË÷-
-gsquid:UselessImportCheck"<Remove this unused import 'me.right.study.post.domain.Post'.(öçÿ˜8ÌÁãË÷-
-fsquid:S00119"IRename this generic name to match the regular expression '^[A-Z][0-9]?$'.(ƒøÕÛşÿÿÿÿ
 squid:UselessImportCheck"XRemove this unused import 'org.springframework.data.querydsl.QuerydslPredicateExecutor'.(î›¨–ıÿÿÿÿ
+fsquid:S00119"IRename this generic name to match the regular expression '^[A-Z][0-9]?$'.(ƒøÕÛşÿÿÿÿ
