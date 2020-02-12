@@ -1,0 +1,29 @@
+.tag-black {
+    display: inline-block;
+    border: 1px solid black;
+    border-radius: 999em;
+    padding: 0 10px;
+    color: black;
+    line-height: 24px;
+    font-size: 18px;
+    text-decoration: none;
+    margin: 0 1px;
+    margin-bottom: 6px;
+}
+
+.tag-white {
+    display: inline-block;
+    border: 1px solid rgba(255,255,255,.8);
+    border-radius: 999em;
+    padding: 0 10px;
+    color: rgb(255, 255, 255);
+    line-height: 24px;
+    font-size: 18px;
+    text-decoration: none;
+    margin: 0 1px;
+    margin-bottom: 6px;
+}
+
+.click:hover {
+    cursor : pointer;
+}

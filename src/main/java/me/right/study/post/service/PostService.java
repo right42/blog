@@ -32,7 +32,8 @@ public class PostService {
     }
 
     public Page<PostResponseDto> findAll(Pageable page){
-        return postRepository.findAll(page).map(PostResponseDto::new);
+        return postRepository
+                .findAll(page).map(PostResponseDto::new);
     }
 
     @Transactional
@@ -51,4 +52,5 @@ public class PostService {
 
         return new PostResponseDto(findPost);
     }
+
 }

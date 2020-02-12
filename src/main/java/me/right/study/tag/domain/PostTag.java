@@ -8,6 +8,7 @@ import javax.persistence.*;
 import java.util.ArrayList;
 import java.util.List;
 
+import static javax.persistence.FetchType.EAGER;
 import static javax.persistence.FetchType.LAZY;
 
 @Entity
@@ -23,7 +24,7 @@ public class PostTag extends BaseTimeEntity {
     @ManyToOne(fetch = LAZY)
     private Post post;
 
-    @ManyToOne(fetch = LAZY, cascade = CascadeType.ALL)
+    @ManyToOne(fetch = EAGER, optional = false, cascade = CascadeType.ALL)
     private Tag tag;
 
     public static void linkPostAndTag(Post post, List<Tag> tags){
