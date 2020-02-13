@@ -21,10 +21,15 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 .mvcMatchers(HttpMethod.POST, "/posts").authenticated()
                 .mvcMatchers(HttpMethod.GET, "/posts/new").authenticated()
                 .anyRequest().permitAll();
-        ;
 
         http.formLogin();
-        http.csrf();
+
+
+        http.csrf().ignoringAntMatchers("/h2-console/**");
+        http.headers()
+                .frameOptions().disable()
+                .cacheControl().disable();
+        http.cors().disable();
     }
 
     @Override

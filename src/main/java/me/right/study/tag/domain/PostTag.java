@@ -30,7 +30,7 @@ public class PostTag extends BaseTimeEntity {
     public static void linkPostAndTag(Post post, List<Tag> tags){
         List<PostTag> postTags = new ArrayList<>();
 
-        tags.forEach((e) -> {
+        tags.forEach(e -> {
             PostTag postTag = new PostTag();
             postTag.tag = e;
 

@@ -68,3 +68,5 @@ g
 7src/main/java/me/right/study/tag/web/TagController.java,3\3\331ebe24d95efa307f1e518861606514ea54884f
 n
 >src/main/java/me/right/study/tag/repository/TagRepository.java,e\8\e8cd2703e700c4293bd5e99c5d7f5b622b8b2867
+g
+7src/main/java/me/right/study/config/SecurityConfig.java,6\1\617fdc0c725fd8e0230f0f4eb4300d72f36b25b9

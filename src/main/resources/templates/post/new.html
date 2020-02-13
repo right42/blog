@@ -74,7 +74,7 @@
                 }
                 
                 timer = setTimeout(function() {
-                    axios.get('/tags?q=' + value)
+                    axios.get('/api/v1/tags?q=' + value)
                         .then(({data : res}) => {
                             $tag.render(res);
                         })

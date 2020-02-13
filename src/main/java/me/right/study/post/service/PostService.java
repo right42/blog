@@ -17,6 +17,7 @@ import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.util.List;
 import java.util.Optional;
+import java.util.stream.Collectors;
 
 @Service
 @RequiredArgsConstructor
@@ -27,8 +28,12 @@ public class PostService {
 
     private final TagRepository tagRepository;
 
-    private List<Post> findAll(){
-        return postRepository.findAll();
+    public List<PostResponseDto> findAll(){
+        return postRepository.findAll()
+                    .stream()
+                    .map(PostResponseDto::new)
+                    .collect(Collectors.toList())
+                ;
     }
 
     public Page<PostResponseDto> findAll(Pageable page){
@@ -52,5 +57,6 @@ public class PostService {
 
         return new PostResponseDto(findPost);
     }
+
 
 }
