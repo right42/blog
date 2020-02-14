@@ -30,7 +30,16 @@ let $tag =
                 selectedTag.appendChild(tag);
             }
         },
-
+        'addTag' : function(tagName, tagId){
+            if (this.saveTag(tagId)){
+                let selectedTag = document.querySelector('#selectedTags');
+                let tag = document.createElement('span');
+                tag.textContent = tagName + ' x ';
+                tag.classList = 'tag-black m-2 click';
+                tag.addEventListener('click', this.removeTag.bind(this));
+                selectedTag.appendChild(tag);
+            }
+        },
         'saveTag' : function (tagId){
             if(!this._tagIds.includes(tagId)){
                 this._tagIds.push(tagId);

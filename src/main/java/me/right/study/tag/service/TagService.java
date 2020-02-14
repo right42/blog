@@ -5,6 +5,7 @@ import lombok.RequiredArgsConstructor;
 import me.right.study.tag.dto.TagIndexDto;
 import me.right.study.tag.dto.TagRequestDto;
 import me.right.study.tag.dto.TagResponseDto;
+import me.right.study.tag.exception.TagDuplicationException;
 import me.right.study.tag.repository.TagRepository;
 import me.right.study.tag.repository.dto.TagPostDto;
 import org.springframework.stereotype.Service;
@@ -33,8 +34,16 @@ public class TagService {
     }
 
     @Transactional
-    public Long save(TagRequestDto dto){
+    public Long save(TagRequestDto dto) {
+        duplicationTag(dto.getName());
+
         return tagRepository.save(dto.toEntity()).getId();
+    }
+
+    private void duplicationTag(String tagName) throws TagDuplicationException {
+        if (!tagRepository.findByName(tagName).isEmpty()){
+            throw new TagDuplicationException("해당 태그가 이미 있습니다.");
+        }
     }
 
     public List<TagResponseDto> findAllByName(String keyword){

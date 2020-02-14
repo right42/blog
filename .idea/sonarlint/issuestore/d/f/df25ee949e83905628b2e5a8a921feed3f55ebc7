@@ -1,5 +1,4 @@
 
-[squid:UselessImportCheck"0Remove this unused import 'java.nio.file.Paths'.(αθ°―8όμ‚.
 _squid:UselessImportCheck"/Remove this unused import 'java.util.Optional'.(¨λέόÿÿÿÿ8§‡όώ-
-Xsquid:UnusedPrivateMethod",Remove this unused private "findAll" method.(λϊΑΑ8—«χ¨ψ-
 Zsquid:UselessImportCheck"/Remove this unused import 'java.nio.file.Path'.(Χ²κΒ8όμ‚.
+[squid:UselessImportCheck"0Remove this unused import 'java.nio.file.Paths'.(αθ°―8όμ‚.

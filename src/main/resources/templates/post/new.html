@@ -28,13 +28,14 @@
 
                 </div>
 
-                <div class="form-group">
-                    <input type="text" id="tagSearch" name="tagSearch" class="form-control" placeholder="Tag name..">
+                <div class="input-group mb-3">
+                    <input id="tagSearch" name="tagSearch" type="text" class="form-control" placeholder="Tag name..." aria-label="Tag name.." aria-describedby="tagSave">
+                    <div class="input-group-append">
+                        <button id="saveTag" class="btn btn-outline-secondary" type="button" >Tag Add</button>
+                    </div>
                 </div>
-    
-                <div id="tags" class="form-group">
-    
-                </div>
+                <div id="tags" class="form-group"></div>
+                <div id="alert" class="alert alert-danger fade" role="alert"></div>
             </div>
 
             <div class="form-group">
@@ -53,6 +54,7 @@
         var timer;
 
         window.addEventListener('load', function(){
+
             ClassicEditor
                 .create( document.querySelector('#content'), {
                     'removePlugins' : ['Italic', 'MediaEmbed'],
@@ -95,6 +97,29 @@
 
                 this.form.submit();
             }
+
+            document.querySelector('#saveTag').addEventListener('click', function(){
+                let name = document.querySelector('#tagSearch').value;
+                if ( name === '') {
+                    return;
+                }
+
+                axios.post('/api/v1/tags', {name}, {
+                    headers : {
+                        'X-CSRF-TOKEN' : document.querySelector('input[name=_csrf]').value,
+                        'contentType' : 'application/json'
+                    }
+                })
+                .then((res) => {
+                    document.querySelector('.alert').classList.add('fade');
+                    $tag.addTag(name, res.data.id);
+                })
+                .catch((err) => {
+                    let errorAlert = document.querySelector('.alert');
+                    errorAlert.textContent = err.response.data.message;
+                    errorAlert.classList.remove('fade');
+                });
+            });
         });
 
         function clearChild(selector){

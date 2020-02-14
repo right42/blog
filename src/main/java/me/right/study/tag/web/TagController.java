@@ -2,9 +2,6 @@ package me.right.study.tag.web;
 
 import lombok.Data;
 import lombok.RequiredArgsConstructor;
-import me.right.study.post.domain.dto.PostResponseDto;
-import me.right.study.post.repository.PostRepository;
-import me.right.study.post.service.PostService;
 import me.right.study.tag.dto.TagRequestDto;
 import me.right.study.tag.dto.TagResponseDto;
 import me.right.study.tag.service.TagService;
@@ -33,9 +30,7 @@ public class TagController {
     @GetMapping("/api/v1/tags")
     @ResponseBody
     public Result tags(@RequestParam(name = "q", required = false) String keyword) {
-        List<TagResponseDto> tags = tagService.findAll();
-
-
+        List<TagResponseDto> tags = tagService.findAllByName(keyword);
         return new Result<>(tags, tags.size());
     }
 
