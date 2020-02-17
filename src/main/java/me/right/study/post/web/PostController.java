@@ -11,8 +11,10 @@ import org.springframework.data.domain.Sort;
 import org.springframework.data.web.PageableDefault;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 
+import javax.naming.Binding;
 import javax.validation.Valid;
 
 @Controller
@@ -41,19 +43,18 @@ public class PostController {
         return "post/view";
     }
 
-    @GetMapping("/posts")
-    @ResponseBody
-    public Page<PostResponseDto> posts(){
-        return postService.findAll(PageRequest.of(0, 10));
-    }
-
     @GetMapping("/posts/new")
-    public String newPost(){
+    public String newPost(@ModelAttribute PostRequestDto postRequestDto){
         return "post/new";
     }
 
     @PostMapping("/posts")
-    public String createPost(@ModelAttribute @Valid PostRequestDto postRequestDto){
+    public String createPost(@ModelAttribute @Valid PostRequestDto postRequestDto, BindingResult result){
+
+        if(result.hasErrors()){
+            return "post/new";
+        }
+
         postService.save(postRequestDto);
 
         return "redirect:/";

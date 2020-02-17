@@ -1,6 +1,7 @@
 package me.right.study.post.service;
 
 import lombok.RequiredArgsConstructor;
+import me.right.study.common.util.Utils;
 import me.right.study.post.domain.Post;
 import me.right.study.post.domain.dto.PostRequestDto;
 import me.right.study.post.domain.dto.PostResponseDto;
@@ -45,8 +46,8 @@ public class PostService {
     public Long save(PostRequestDto postRequestDto) {
         postRequestDto.setWriter("right");
 
-        List<Tag> tags = tagRepository.findAllById(postRequestDto.getTagIds());
         Post post = postRequestDto.toEntity();
+        List<Tag> tags = tagRepository.findAllById(postRequestDto.getTagIds());
         PostTag.linkPostAndTag(post, tags);
 
         return postRepository.save(post).getId();
