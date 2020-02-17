@@ -88,6 +88,8 @@ fabric.properties
 # Sonarlint plugin
 .idea/**/sonarlint/
 
+.idea/sonarlint/**
+
 # SonarQube Plugin
 .idea/**/sonarIssues.xml
 
@@ -134,5 +136,7 @@ src/main/resources/static/upload/
 
 ### vscode ###
 .settings
+
+study.iml
 
 # End of https://www.gitignore.io/api/java,java-web,intellij
