@@ -6,6 +6,7 @@ import me.right.study.post.repository.PostRepository;
 import me.right.study.tag.domain.PostTag;
 import me.right.study.tag.domain.Tag;
 import me.right.study.tag.repository.TagRepository;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.ApplicationArguments;
 import org.springframework.boot.ApplicationRunner;
 import org.springframework.stereotype.Component;
