@@ -23,7 +23,7 @@
                     </a>
 
                     <p class="post-meta">Posted by<span th:text="${post.createdDate}"></span></p>
-                    <span th:each="tag : ${post.tags}" th:text="${tag.name}" class="tag-black m-2 click"></span>
+                    <a th:href="@{'/tags/#' + ${tag.name}}" th:each="tag : ${post.tags}" th:text="${tag.name}" class="tag-black m-2 click"></a>
                     <hr>
                 </div>
 

@@ -1,18 +1,13 @@
 package me.right.study;
 
-import org.jasypt.encryption.StringEncryptor;
-import org.jasypt.encryption.pbe.StandardPBEStringEncryptor;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Value;
-import org.springframework.boot.CommandLineRunner;
-import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
-import org.springframework.boot.autoconfigure.security.servlet.SecurityAutoConfiguration;
 import org.springframework.boot.builder.SpringApplicationBuilder;
-import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
+import org.springframework.cloud.aws.autoconfigure.context.ContextResourceLoaderAutoConfiguration;
+import org.springframework.cloud.aws.autoconfigure.context.ContextStackAutoConfiguration;
 
 @SpringBootApplication
+@EnableAutoConfiguration(exclude = {ContextStackAutoConfiguration.class, ContextResourceLoaderAutoConfiguration.class})
 public class Application  {
 
 	private static final String AWS = "spring.config.location=classpath:/aws.yml";

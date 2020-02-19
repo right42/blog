@@ -4,7 +4,13 @@
       layout:decorate="~{layout/default.html}">
 
 <head>
-    <title th:text="Right blog"></title>
+
+    <link rel="stylesheet" href="https://uicdn.toast.com/tui-editor/latest/tui-editor.css"></link>
+    <link rel="stylesheet" href="https://uicdn.toast.com/tui-editor/latest/tui-editor-contents.css"></link>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.48.4/codemirror.css"></link>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/github.min.css"></link>
+    <!-- Scripts -->
+    <script src="https://uicdn.toast.com/tui-editor/latest/tui-editor-Editor-full.js"></script>
 </head>
 
 <th:block layout:fragment="header">
@@ -21,14 +27,11 @@
             </div>
 
             <div class="form-group">
-                <textarea th:field="*{content}"></textarea>
-                <div th:if="${#fields.hasErrors('content')}" th:errors="*{content}" class="alert alert-danger" role="alert"></div>
+                <div id="content" name="content"></div>
             </div>
 
             <div id="tagBox" class="form-group">
-                <div id="selectedTags" class="form-group">
-
-                </div>
+                <div id="selectedTags" class="form-group"></div>
 
                 <div class="input-group mb-3">
                     <input id="tagSearch" name="tagSearch" type="text" class="form-control" placeholder="Tag name..." aria-label="Tag name.." aria-describedby="tagSave">
@@ -50,22 +53,40 @@
 </th:block>
 
 <th:block layout:fragment="myScript">
-    <script src="https://cdn.ckeditor.com/ckeditor5/16.0.0/classic/ckeditor.js"></script>
-    <script src="/js/ckeditor-custom-adapter.js"></script>
     <script src="/js/tag.js"></script>
     <script>
         var timer;
 
         window.addEventListener('load', function(){
+            var editor = new tui.Editor({
+                el: document.querySelector('#content'),
+                previewStyle: 'vertical',
+                height: '300px',
+                initialEditType: 'markdown',
+                 hooks: {
+                    'addImageBlobHook': function(blob, callback) {
+                        let formData = new FormData();
+                        formData.append('upload', blob);
 
-            ClassicEditor
-                .create( document.querySelector('#content'), {
-                    'removePlugins' : ['Italic', 'MediaEmbed'],
-                    extraPlugins: [ MyCustomUploadAdapterPlugin ]
-                })
-                .catch( error => {
-                    console.error( error );
-                } );
+                        axios.post('/files', formData, {
+                            'headers' : {
+                                'X-CSRF-TOKEN' : document.querySelector('input[name=_csrf]').value,
+                                'contentType' : 'multipart/form-data'
+                            }
+                        })
+                        .then((res) => {
+                            console.dir(res);
+                        })
+                        .catch((err) => {
+                            console.dir(err);
+                        });
+
+                        console.dir(blob);
+                        console.dir(callback);
+                    }
+                }
+             });
+
 
             document.querySelector('#tagSearch').addEventListener('input', function(){
                 if ( timer ) {

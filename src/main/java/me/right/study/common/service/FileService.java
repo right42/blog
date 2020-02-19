@@ -4,6 +4,7 @@ import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import me.right.study.common.domain.FileData;
 import me.right.study.common.repository.FileRepository;
+import me.right.study.common.util.Utils;
 import me.right.study.common.util.WebUtil;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -53,7 +54,7 @@ public class FileService {
     private void addFileId(Long id){
         List<Long> tempFiles = WebUtil.getSessionAttribute(TEMP_FILE_LIST);
 
-        if ( Objects.isNull(tempFiles)) {
+        if (!Utils.isNotNullAndNotEmpty(tempFiles)) {
             WebUtil.setSessionAttribute(TEMP_FILE_LIST, Arrays.asList(id));
         } else {
             tempFiles.add(id);
