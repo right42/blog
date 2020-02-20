@@ -1,20 +1,15 @@
 package me.right.study.post.web;
 
 import lombok.RequiredArgsConstructor;
-import me.right.study.post.domain.dto.PostRequestDto;
-import me.right.study.post.domain.dto.PostResponseDto;
+import me.right.study.post.dto.PostRequestDto;
 import me.right.study.post.service.PostService;
-import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
-import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Sort;
-import org.springframework.data.web.PageableDefault;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 
-import javax.naming.Binding;
 import javax.validation.Valid;
 
 @Controller
@@ -60,4 +55,11 @@ public class PostController {
         return "redirect:/";
     }
 
+
+    @GetMapping("/archives")
+    public String archives(Model model){
+        model.addAttribute("archives", postService.findAllGroupingYear());
+
+        return "post/archives";
+    }
 }

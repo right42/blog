@@ -4,7 +4,7 @@
       layout:decorate="~{layout/default.html}">
 
 <head>
-    <title th:text="Right blog"></title>
+    <title>Right Blog</title>
 </head>
 
 <th:block layout:fragment="header">
@@ -22,7 +22,7 @@
                         <h2 class="post-title" th:text="${post.title}"></h2>
                     </a>
 
-                    <p class="post-meta">Posted by<span th:text="${post.createdDate}"></span></p>
+                    <p class="post-meta">Posted by<span th:text="${#temporals.format(post.createdDate, 'yyyy-MM-dd')}"></span></p>
                     <a th:href="@{'/tags/#' + ${tag.name}}" th:each="tag : ${post.tags}" th:text="${tag.name}" class="tag-black m-2 click"></a>
                     <hr>
                 </div>

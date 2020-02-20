@@ -1,10 +1,9 @@
 package me.right.study.tag.dto;
 
-import lombok.Data;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
-import me.right.study.post.domain.dto.PostResponseDto;
+import me.right.study.post.dto.PostResponseDto;
 import me.right.study.tag.repository.dto.TagPostDto;
 
 import java.util.List;

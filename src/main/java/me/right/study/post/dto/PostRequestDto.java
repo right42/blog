@@ -1,11 +1,9 @@
-package me.right.study.post.domain.dto;
+package me.right.study.post.dto;
 
 import lombok.Getter;
 import lombok.Setter;
 import me.right.study.post.domain.Post;
-import org.hibernate.validator.constraints.Length;
 
-import javax.validation.constraints.Min;
 import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.Size;
 import java.util.List;

@@ -1,7 +1,7 @@
 package me.right.study.post.web;
 
 import lombok.RequiredArgsConstructor;
-import me.right.study.post.domain.dto.PostRequestDto;
+import me.right.study.post.dto.PostRequestDto;
 import me.right.study.post.service.PostService;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.PostMapping;

@@ -1,4 +1,4 @@
-package me.right.study.post.domain.dto;
+package me.right.study.post.dto;
 
 
 import lombok.AllArgsConstructor;
@@ -39,10 +39,6 @@ public class PostResponseDto {
                         .map(e -> new TagResponseDto(e.getTag()))
                         .collect(Collectors.toList());
 
-    }
-
-    public String getCreatedDate(){
-        return createdDate.format(DateTimeFormatter.ofPattern("yyyy-MM-dd")).toString();
     }
 
 }

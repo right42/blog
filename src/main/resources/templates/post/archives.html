@@ -26,19 +26,16 @@
         <div class="container">
             <div class="row">
                 <div class="col-lg-8 col-md-10 mx-auto">
-                    <a th:href="@{'#' + ${tag.tagName}}" th:each="tag : *{tagPosts}" th:text="${tag.tagName}" class="tag-black m-2 click"></a>
-                    <br><br>
-
-                    <div class="post-preview" th:each="tagPost : ${tagPosts}">
-                        <p class="post-meta" th:attr="id=${tagPost.tagName}" th:text="${tagPost.tagName}"></p>
-
-                        <div th:each="post : ${tagPost.posts}">
-                            <a th:href="@{/post/{id}(id=${post.id})}">
-                                <h2 class="post-title" th:text="${post.title}"></h2>
-                            </a>
-                            <hr>
-                        </div>
+                    <div th:each="archive : ${archives}">
+                        <span th:text="${archive.year}"></span>
+                        <ul>
+                            <li th:each="post : ${archive.posts}">
+                                <span th:text="${#temporals.format(post.createdDate, 'MM-dd')}"></span>
+                                <a th:href="@{'/post/{postId}'(postId=${post.id})}" th:text="${post.title}"></a>
+                            </li>
+                        </ul>
                     </div>
+
                 </div>
             </div>
         </div>

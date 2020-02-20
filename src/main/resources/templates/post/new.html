@@ -76,6 +76,7 @@
                         })
                         .then((res) => {
                             console.dir(res);
+                            callback(res.data.uri);
                         })
                         .catch((err) => {
                             console.dir(err);

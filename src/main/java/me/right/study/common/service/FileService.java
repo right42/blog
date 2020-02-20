@@ -54,10 +54,10 @@ public class FileService {
     private void addFileId(Long id){
         List<Long> tempFiles = WebUtil.getSessionAttribute(TEMP_FILE_LIST);
 
-        if (!Utils.isNotNullAndNotEmpty(tempFiles)) {
-            WebUtil.setSessionAttribute(TEMP_FILE_LIST, Arrays.asList(id));
-        } else {
+        if (Utils.isNotNullAndNotEmpty(tempFiles)) {
             tempFiles.add(id);
+        } else {
+            WebUtil.setSessionAttribute(TEMP_FILE_LIST, Arrays.asList(id));
         }
     }
 
