@@ -10,7 +10,7 @@
             <div class="row">
                 <div class="col-lg-8 col-md-10 mx-auto">
                     <div class="post-heading">
-
+                        <h1>Archives</h1>
                     </div>
                 </div>
             </div>
@@ -28,10 +28,10 @@
                 <div class="col-lg-8 col-md-10 mx-auto">
                     <div th:each="archive : ${archives}">
                         <span th:text="${archive.year}"></span>
-                        <ul>
+                        <ul class="">
                             <li th:each="post : ${archive.posts}">
                                 <span th:text="${#temporals.format(post.createdDate, 'MM-dd')}"></span>
-                                <a th:href="@{'/post/{postId}'(postId=${post.id})}" th:text="${post.title}"></a>
+                                <a style="color : rgb(0, 133, 161)" th:href="@{'/post/{postId}'(postId=${post.id})}" th:text="${post.title}"></a>
                             </li>
                         </ul>
                     </div>

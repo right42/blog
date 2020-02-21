@@ -1,6 +1,8 @@
 package me.right.study;
 
 import lombok.RequiredArgsConstructor;
+import me.right.study.account.Account;
+import me.right.study.account.AccountService;
 import me.right.study.post.domain.Post;
 import me.right.study.post.repository.PostRepository;
 import me.right.study.tag.domain.PostTag;
@@ -12,6 +14,7 @@ import org.springframework.boot.ApplicationRunner;
 import org.springframework.stereotype.Component;
 import org.springframework.transaction.annotation.Transactional;
 
+import javax.persistence.EntityManager;
 import java.lang.reflect.Array;
 import java.util.Arrays;
 import java.util.stream.IntStream;
@@ -45,5 +48,6 @@ public class InitData implements ApplicationRunner {
 
             PostTag.linkPostAndTag(savedPost, Arrays.asList(savedTag));
         }
+
     }
 }

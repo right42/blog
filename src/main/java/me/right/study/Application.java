@@ -5,6 +5,9 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.builder.SpringApplicationBuilder;
 import org.springframework.cloud.aws.autoconfigure.context.ContextResourceLoaderAutoConfiguration;
 import org.springframework.cloud.aws.autoconfigure.context.ContextStackAutoConfiguration;
+import org.springframework.context.annotation.Bean;
+import org.springframework.security.crypto.factory.PasswordEncoderFactories;
+import org.springframework.security.crypto.password.PasswordEncoder;
 
 @SpringBootApplication
 @EnableAutoConfiguration(exclude = {ContextStackAutoConfiguration.class, ContextResourceLoaderAutoConfiguration.class})
@@ -19,6 +22,12 @@ public class Application  {
 						APPLICATION, AWS
 				)
 				.run(args);
+	}
+
+
+	@Bean
+	public PasswordEncoder passwordEncoder(){
+		return PasswordEncoderFactories.createDelegatingPasswordEncoder();
 	}
 
 }
