@@ -40,6 +40,7 @@ public class CustomPostRepositoryImpl implements CustomPostRepository<Post, Long
                 .on(tag.id.eq(postTag.tag.id)).fetchJoin()
             .where(tag.name.eq(tagName))
             .fetch();
+
     }
 
 }
