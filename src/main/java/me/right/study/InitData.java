@@ -28,6 +28,7 @@ public class InitData implements ApplicationRunner {
 
     private final TagRepository tagRepository;
 
+
     @Override
     @Transactional
     public void run(ApplicationArguments args) throws Exception {

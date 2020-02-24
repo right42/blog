@@ -35,9 +35,9 @@ public class CustomPostRepositoryImpl implements CustomPostRepository<Post, Long
         return query
             .selectFrom(post)
             .innerJoin(postTag)
-                .on(post.id.eq(postTag.post.id)).fetchJoin()
-            .innerJoin(tag).fetchJoin()
-                .on(tag.id.eq(postTag.tag.id)).fetchJoin()
+                .on(post.id.eq(postTag.post.id))
+            .innerJoin(tag)
+                .on(tag.id.eq(postTag.tag.id))
             .where(tag.name.eq(tagName))
             .fetch();
 
